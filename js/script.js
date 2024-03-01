@@ -27,10 +27,8 @@ btnStart.addEventListener('click', function(){
    // invoco la funzione per creare le bombe
    const bombs = createBombs(nCell);
    
+
    console.log('bombe totali in gioco -----------',bombs)
-
-
-
 
 
    // creazione delle Cell
@@ -63,12 +61,23 @@ function createCell(indice, nCell){
    // creazione di una proprietà custom dell'HTML
    element._numIndice = indice;
 
+   if(bombsArray.includes(element._numIndice)){
+      element._numIndice = '';
+      element._numBomb = 'bomba';
+   }
+
 
    // al click di 'element'....
    element.addEventListener('click', function(){
 
+      if(element._numBomb === 'bomba'){
+         element.innerHTML = '';
+         element.classList.add('bg-danger');
+         // ferma il gioco
+      }
+
       // scrivi dentro 'element' il numero dell'indice e aggiungi ad element la Class '_bgcell'
-      element.innerHTML= element._numIndice;
+      element.innerHTML = element._numIndice;
       element.classList.add('_bgcell');
    })
 
@@ -81,16 +90,20 @@ function createCell(indice, nCell){
 // funzione per creare le bombe
 function createBombs(celle){
 
-
+   // cicla affinchè gli elementi dell'Array sono meno di 16
    while(bombsArray.length < 16){
-      const nBombs = Math.ceil(Math.random() * celle); 
+      const number = Math.ceil(Math.random() * celle); 
 
-      if(!bombsArray.includes(nBombs)){
-         bombsArray.push(nBombs);
+      // se il numero estratto non è compreso nell'Array inseriscilo
+      if(!bombsArray.includes(number)){
+         bombsArray.push(number);
       }
    }
    return bombsArray; 
 }
+
+
+
 
 
 
