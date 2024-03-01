@@ -12,9 +12,15 @@ const nCellArray = [100, 81, 49];
 // al click di btnStart....
 btnStart.addEventListener('click', function(){
 
+
    reset();
 
+
+
+   // con il valore della difficoltà da 0 a 2 valorizzo un numero dentro un Array
    const nCell = nCellArray[difficultSelect.value];
+
+
 
 
    // creazione delle Cell
@@ -24,6 +30,7 @@ btnStart.addEventListener('click', function(){
    
       containerCell.append(cell);   
    }
+
 })
 
 
@@ -32,7 +39,7 @@ btnStart.addEventListener('click', function(){
 /////////// FUNCTIONS ///////////////
 
 // funzione che crea le Cell
-function createCell(indice, numberCell){
+function createCell(indice, nCell){
 
    // creo sull'HTML un 'div' e gli metto la Class '_cell'
    const element = document.createElement('div');
@@ -40,18 +47,7 @@ function createCell(indice, numberCell){
 
 
    // condizione per sapere quale grado di difficoltà inserire in element
-   let x = '';
-
-   if(numberCell === 100){
-      x = '_easy';
-   }
-   else if(numberCell === 81){
-      x = '_medium';
-   }
-   else{
-      x = '_hard';
-   }
-   element.classList.add(x);
+   element.classList.add(cssClassEasyMediumHard(nCell));
 
 
    // creazione di una proprietà custom dell'HTML
@@ -63,15 +59,21 @@ function createCell(indice, numberCell){
 
       // scrivi dentro 'element' il numero dell'indice e aggiungi ad element la Class '_bgcell'
       element.innerHTML= element._numIndice;
-      element.classList.add('_bgcell')
+      element.classList.add('_bgcell');
    })
 
-   return element
+   return element;
 }
       
 
 
 
+// funzione per creare le bombe
+function createBombs(){
+
+
+
+}
 
 
 
@@ -82,6 +84,24 @@ function createCell(indice, numberCell){
 
 
 
+
+
+// funzione che stabilisce quale classe css inserire in 'element'
+function cssClassEasyMediumHard(confronto){
+
+   let x = '';
+
+   if(confronto === 100){
+      x = '_easy';
+   }
+   else if(confronto === 81){
+      x = '_medium';
+   }
+   else{
+      x = '_hard';
+   }
+   return x;
+}
 
 
 
