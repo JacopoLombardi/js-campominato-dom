@@ -81,22 +81,15 @@ function createCell(indice, nCell){
 // funzione per creare le bombe
 function createBombs(celle){
 
-   let i = 0; 
 
-   while(i <= 10){
-        
-      nBombs = Math.ceil(Math.random() * celle); 
+   while(bombsArray.length < 16){
+      const nBombs = Math.ceil(Math.random() * celle); 
 
-      console.log('nbomba', nBombs);
-
-      bombsArray.push(nBombs);
-
-      console.log('Array bombe', bombsArray);
-
-      i++;
+      if(!bombsArray.includes(nBombs)){
+         bombsArray.push(nBombs);
+      }
    }
-
-   return bombsArray;
+   return bombsArray; 
 }
 
 
