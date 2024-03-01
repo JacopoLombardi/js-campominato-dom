@@ -7,18 +7,28 @@ const difficultSelect = document.querySelector('.difficult_select');
 
 const nCellArray = [100, 81, 49];
 
+const bombsArray = [];
+
+
 
 
 // al click di btnStart....
 btnStart.addEventListener('click', function(){
 
-
+   // invoco la funzione reset
    reset();
 
-
+ 
 
    // con il valore della difficoltà da 0 a 2 valorizzo un numero dentro un Array
    const nCell = nCellArray[difficultSelect.value];
+
+
+   // invoco la funzione per creare le bombe
+   const bombs = createBombs(nCell);
+   
+   console.log('bombe totali in gioco -----------',bombs)
+
 
 
 
@@ -46,7 +56,7 @@ function createCell(indice, nCell){
    element.classList.add('_cell');
 
 
-   // condizione per sapere quale grado di difficoltà inserire in element
+   // invoco la funzione per sapere quale classe dare ad 'element'
    element.classList.add(cssClassEasyMediumHard(nCell));
 
 
@@ -69,10 +79,24 @@ function createCell(indice, nCell){
 
 
 // funzione per creare le bombe
-function createBombs(){
+function createBombs(celle){
 
+   let i = 0; 
 
+   while(i <= 10){
+        
+      nBombs = Math.ceil(Math.random() * celle); 
 
+      console.log('nbomba', nBombs);
+
+      bombsArray.push(nBombs);
+
+      console.log('Array bombe', bombsArray);
+
+      i++;
+   }
+
+   return bombsArray;
 }
 
 

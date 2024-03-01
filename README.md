@@ -7,5 +7,5 @@ Campo Minato
 
 ### Es. corrente
 4. Creare vari livelli di difficoltà.
-5. 
+5. Creare le 16 bombe.
 6. 
