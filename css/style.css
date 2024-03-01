@@ -1,0 +1,42 @@
+
+._container_cell{
+   width: 700px;
+   aspect-ratio: 1;
+   outline: 1px solid;
+}
+
+._cell{
+   aspect-ratio: 1;
+   border: 1px solid;
+   font-weight: 600;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+
+
+/* difficults */
+._hard{
+   width: calc(100% / 7);
+}
+
+._medium{
+   width: calc(100% / 9);
+}
+
+._easy{
+   width: calc(100% / 10);
+} 
+
+
+
+
+/* background */
+
+._bgcell{
+   background-color: aqua;
+}
+
