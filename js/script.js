@@ -9,7 +9,7 @@ const nCellArray = [100, 81, 49];
 
 const bombsArray = [];
 
-
+const elementBombArray = [];
 
 
 // al click di btnStart....
@@ -64,6 +64,8 @@ function createCell(indice, nCell){
    if(bombsArray.includes(element._numIndice)){
       element._numIndice = '';
       element._numBomb = 'bomba';
+      element.classList.add('_bomb');
+      elementBombArray.push(element);
    }
 
 
@@ -71,9 +73,9 @@ function createCell(indice, nCell){
    element.addEventListener('click', function(){
 
       if(element._numBomb === 'bomba'){
-         element.innerHTML = '';
-         element.classList.add('bg-danger');
-         // ferma il gioco
+         for(let i = 0; i < elementBombArray.length; i++){
+            elementBombArray[i].classList.add('bg-danger');
+         }
       }
 
       // scrivi dentro 'element' il numero dell'indice e aggiungi ad element la Class '_bgcell'
