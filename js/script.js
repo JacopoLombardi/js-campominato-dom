@@ -79,17 +79,13 @@ function createCell(indice, nCell, punteggio){
    // al click di 'element'....
    element.addEventListener('click', function(){
 
-
       // se la proprietà custom '_numBomb' ha scritto dentro di se 'bomba'...
       if(element._numBomb === 'bomba'){
 
          // invoco la funzione per far esplodere tutte le bombe
          explodeAllBombs(elementBombArray);
-
          outputFinalScore.innerHTML = `Hai Perso!`;
-
          overlay.classList.remove('d-none');
-
          return;
       }
 
@@ -97,7 +93,7 @@ function createCell(indice, nCell, punteggio){
       element.innerHTML = element._numIndice;
       element.classList.add('_bgcell');
 
-
+      // invoco la funzione per sapere quante caselle sono state cliccate e aggiornare il counter
       isClicked(element, nCell, punteggio, elementsArray, bombsArray);
 
    })
@@ -127,7 +123,6 @@ function isClicked(element, nCell, punteggio, elementsArray){
 
     outputScore.innerHTML = `Hai fatto ${punteggio} punti su ${nCell}`;
 }
-
 
 
 

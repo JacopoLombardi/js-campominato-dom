@@ -12,53 +12,55 @@
 </head>
 <body>
    
-      <section class="container">
-         <div class="row  d-flex  justify-content-end  align-items-center  mt-5">
+   <h1 class=" text-center  mt-5">Campo Minato</h1>
+   
+   <section class="container">
+      <div class="row  d-flex  justify-content-end  align-items-center  mt-5">
 
-            <!-- counter current score -->
-            <div class="col-4">
-               <p class="_output_score  fs-3  fw-semibold"></p>
-            </div>
-
-            <!-- btn Start -->
-            <div class="col-1  btn_start  btn  btn-primary  rounded-5  fw-semibold  fs-5  py-2  me-5">Start</div>
-
-            <!-- select difficult -->
-            <div class="col-3  form-floating">
-               <select class="difficult_select  form-select  fw-semibold  fs-5  p-0  ps-5">
-                  <option value="0">Easy</option>
-                  <option value="1">Medium</option>
-                  <option value="2">Hard</option>
-               </select>
-            </div>
+         <!-- counter current score -->
+         <div class="col-4">
+            <p class="_output_score  fs-3  fw-semibold"></p>
          </div>
 
+         <!-- btn Start -->
+         <div class="col-1  btn_start  btn  btn-primary  rounded-5  fw-semibold  fs-5  py-2  me-5">Start</div>
 
-         <!-- griglia Cell -->
-         <div class="row  mt-5">
-            <div class="d-flex  justify-content-center  align-items-center  position-relative  mt-5">
+         <!-- select difficult -->
+         <div class="col-3  form-floating">
+            <select class="difficult_select  form-select  fw-semibold  fs-5  p-0  ps-5">
+               <option value="0">Easy</option>
+               <option value="1">Medium</option>
+               <option value="2">Hard</option>
+            </select>
+         </div>
+      </div>
 
-               <div class="_overlay  text-white  d-flex  d-none  justify-content-center  align-items-center  fw-semibold  z-3  position-absolute">
-                  <p>End Game</p>
-               </div>
 
-               <div class="_container_cell  d-flex  flex-wrap  bg-light">
+      <!-- griglia Cell -->
+      <div class="row  mt-5">
+         <div class="d-flex  justify-content-center  align-items-center  position-relative  mt-4">
 
-                  <!-- <div class="_cell"> x </div> -->
+            <div class="_overlay  text-white  d-flex  d-none  justify-content-center  align-items-center  fw-semibold  z-3  position-absolute">
+               <p>End Game</p>
+            </div>
 
-               </div>
+            <div class="_container_cell  d-flex  flex-wrap  bg-light">
+
+               <!-- <div class="_cell"> x </div> -->
 
             </div>
-         </div>
 
-         <!-- final score -->
-         <div class="row  mt-5">
-            <div class="col  text-center">
-               <p class="_output_final_score  fs-1  fw-semibold"></p>
-            </div>
          </div>
+      </div>
 
-      </section>
+      <!-- final score -->
+      <div class="row  mt-5">
+         <div class="col  text-center">
+            <p class="_output_final_score  fs-1  fw-semibold"></p>
+         </div>
+      </div>
+
+   </section>
     
    <script src="js/script.js"></script>
 </body>
