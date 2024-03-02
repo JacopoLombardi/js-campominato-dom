@@ -4,6 +4,8 @@ const containerCell = document.querySelector('._container_cell');
 const btnStart = document.querySelector('.btn_start');
 const btnClicked = document.querySelector('._clicked');
 const difficultSelect = document.querySelector('.difficult_select');
+const overlay = document.querySelector('._overlay');
+
 // output string
 const outputFinalScore = document.querySelector('._output_final_score');
 const outputScore = document.querySelector('._output_score');
@@ -20,19 +22,15 @@ const elementsArray = [];
 // al click di btnStart....
 btnStart.addEventListener('click', function(){
 
-   // invoco la funzione reset
    reset();
 
    let score = 0;
 
-
    // con il valore della difficoltà da 0 a 2 valorizzo un numero dentro un Array
    const nCell = nCellArray[difficultSelect.value];
 
-   // invoco la funzione per creare le bombe
-   const bombs = createBombs(nCell);
-
-
+   // invoco la funzione per creare le bombe nell'Array
+   const bombsArray = [createBombs(nCell)]; 
 
    // creazione delle Cell
    for( let i = 1; i <= nCell; i++){
@@ -42,37 +40,10 @@ btnStart.addEventListener('click', function(){
       containerCell.append(cell);   
    }
 
-
-
-///////////////////////////////////////////////////////////////////////////////////
-// work in progress
-
-
-   let eliminated;
-   const Array = [];
-
-   for(let i = 0; i < bombsArray.length; i++){
-
-      let x = bombsArray[i];
-
-      eliminated = elementsArray.splice(x, 1);
-      Array.push(eliminated)
-   }
-
-   console.log(Array)
-
-
-console.log(elementsArray)
-   console.log(bombsArray)
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////
-
 })
+
+
+
 
 
 
@@ -86,11 +57,11 @@ function createCell(indice, nCell, punteggio){
    const element = document.createElement('div');
    element.classList.add('_cell');
 
-   // inserisco tutti gli element dentro un Array
-   elementsArray.push(element);
-
    // invoco la funzione per sapere quale classe dare ad 'element'
    element.classList.add(cssClassEasyMediumHard(nCell));
+
+   // inserisco tutti gli element dentro un Array
+   elementsArray.push(element);
 
    // creazione di una proprietà custom dell'HTML
    element._numIndice = indice;
@@ -108,14 +79,18 @@ function createCell(indice, nCell, punteggio){
    // al click di 'element'....
    element.addEventListener('click', function(){
 
+
       // se la proprietà custom '_numBomb' ha scritto dentro di se 'bomba'...
       if(element._numBomb === 'bomba'){
 
-         // aggiungi a tutti gli elementi bomba dell'Array la classe 'bg-danger'
-         for(let i = 0; i < elementBombArray.length; i++){
-            elementBombArray[i].classList.add('bg-danger');
-         }
+         // invoco la funzione per far esplodere tutte le bombe
+         explodeAllBombs(elementBombArray);
+
          outputFinalScore.innerHTML = `Hai Perso!`;
+
+         overlay.classList.remove('d-none');
+
+         return;
       }
 
       // scrivi dentro 'element' il numero dell'indice e aggiungi ad element la Class '_bgcell'
@@ -125,8 +100,6 @@ function createCell(indice, nCell, punteggio){
 
       isClicked(element, nCell, punteggio, elementsArray, bombsArray);
 
-      
-      
    })
 
    return element;
@@ -160,10 +133,6 @@ function isClicked(element, nCell, punteggio, elementsArray){
 
 
 
-
-
-
-
 // funzione per creare le bombe
 function createBombs(celle){
 
@@ -177,6 +146,17 @@ function createBombs(celle){
       }
    }
    return bombsArray; 
+}
+
+
+
+// funzione che fa esplodere tutte le bombe
+function explodeAllBombs(elementBombArray){
+
+   // aggiungi a tutti gli elementi bomba dell'Array la classe 'bg-danger'
+   for(let i = 0; i < elementBombArray.length; i++){
+      elementBombArray[i].classList.add('bg-danger');
+   }
 }
 
 
@@ -205,6 +185,8 @@ function cssClassEasyMediumHard(confronto){
 // funzione di reset
 function reset(){
    containerCell.innerHTML = '';
+   overlay.classList.add('d-none');
+
    outputScore.innerHTML = '';
    outputFinalScore.innerHTML = '';
 }

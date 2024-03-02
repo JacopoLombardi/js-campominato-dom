@@ -15,7 +15,13 @@
    align-items: center;
 }
 
-
+._overlay{
+   height: 600px;
+   aspect-ratio: 1;
+   background-color: rgba(0, 0, 0, 0.508);
+   font-size: 60px;
+   
+}
 
 
 
