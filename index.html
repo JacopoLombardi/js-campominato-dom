@@ -13,13 +13,19 @@
 <body>
    
       <section class="container">
-         <!-- btn Start -->
-         <div class="row  d-flex  justify-content-end  mt-5">
-            <div class="col-1  btn_start  btn  btn-primary  rounded-5  fw-semibold  pt-3  me-5">Start</div>
+         <div class="row  d-flex  justify-content-end  align-items-center  mt-5">
 
+            <!-- counter current score -->
+            <div class="col-4">
+               <p class="_output_score  fs-3  fw-semibold"></p>
+            </div>
+
+            <!-- btn Start -->
+            <div class="col-1  btn_start  btn  btn-primary  rounded-5  fw-semibold  fs-5  py-2  me-5">Start</div>
+
+            <!-- select difficult -->
             <div class="col-3  form-floating">
-               <select class="difficult_select  form-select  fw-semibold  p-0  ps-5" id="floatingSelect" aria-label="Floating label select example">
-                  
+               <select class="difficult_select  form-select  fw-semibold  fs-5  p-0  ps-5">
                   <option value="0">Easy</option>
                   <option value="1">Medium</option>
                   <option value="2">Hard</option>
@@ -34,6 +40,13 @@
 
                <!-- <div class="_cell"> x </div> -->
 
+            </div>
+         </div>
+
+         <!-- final score -->
+         <div class="row  mt-5">
+            <div class="col  text-center">
+               <p class="_output_final_score  fs-1  fw-semibold"></p>
             </div>
          </div>
 
