@@ -13,7 +13,9 @@ const outputScore = document.querySelector('._output_score');
 const nCellArray = [100, 81, 49];
 const bombsArray = [];
 const elementBombArray = [];
-const elements = [];
+const elementsArray = [];
+
+
 
 // al click di btnStart....
 btnStart.addEventListener('click', function(){
@@ -23,7 +25,7 @@ btnStart.addEventListener('click', function(){
 
    let score = 0;
 
-    console.log('inizio',score)
+
    // con il valore della difficoltà da 0 a 2 valorizzo un numero dentro un Array
    const nCell = nCellArray[difficultSelect.value];
 
@@ -40,10 +42,37 @@ btnStart.addEventListener('click', function(){
       containerCell.append(cell);   
    }
 
+
+
+///////////////////////////////////////////////////////////////////////////////////
+// work in progress
+
+
+   let eliminated;
+   const Array = [];
+
+   for(let i = 0; i < bombsArray.length; i++){
+
+      let x = bombsArray[i];
+
+      eliminated = elementsArray.splice(x, 1);
+      Array.push(eliminated)
+   }
+
+   console.log(Array)
+
+
+console.log(elementsArray)
+   console.log(bombsArray)
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+
 })
-
-
-
 
 
 
@@ -58,7 +87,7 @@ function createCell(indice, nCell, punteggio){
    element.classList.add('_cell');
 
    // inserisco tutti gli element dentro un Array
-   elements.push(element);
+   elementsArray.push(element);
 
    // invoco la funzione per sapere quale classe dare ad 'element'
    element.classList.add(cssClassEasyMediumHard(nCell));
@@ -94,7 +123,7 @@ function createCell(indice, nCell, punteggio){
       element.classList.add('_bgcell');
 
 
-      isClicked(element, nCell, punteggio, elements);
+      isClicked(element, nCell, punteggio, elementsArray, bombsArray);
 
       
       
@@ -107,50 +136,24 @@ function createCell(indice, nCell, punteggio){
 
 
 
-
-function isClicked(element, nCell, punteggio, elements){
+//  funzione che mi comunica se una cella è gia stata cliccata o no, con incremento di counter
+function isClicked(element, nCell, punteggio, elementsArray){
 
    element.classList.add('_clicked');
 
-   
-
-   elements.splice();
-
-   for(let i = 0; i < elements.length; i++){
-
-      if(elements[i].classList.contains('_clicked')){
-         
+   // controlla con un ciclo quante classi '_clicked' sono state assegnate, e il numero sarà il counter
+   for(let i = 0; i < elementsArray.length; i++){
+      if(elementsArray[i].classList.contains('_clicked')){
          punteggio++;
-         console.log(punteggio)
       }
    }
-
-
-
-
-   //  if(!element.classList.contains('_clicked')){
-
-   //     element.classList.add('_clicked');
-   //     console.log(element)
-
-   //     punteggio++;
-
-   //     console.log(punteggio)
-   //    }
-
 
     if(punteggio === (nCell - 16)){
        outputFinalScore.innerHTML = `Hai Vinto!`;
     }
 
     outputScore.innerHTML = `Hai fatto ${punteggio} punti su ${nCell}`;
-
 }
-
-
-
-
-
 
 
 
