@@ -13,9 +13,11 @@ const outputScore = document.querySelector('._output_score');
 
 // array
 const nCellArray = [100, 81, 49];
-const bombsArray = [];
+let bombsArray = [];
 const elementBombArray = [];
 const elementsArray = [];
+
+let score = 0;
 
 
 
@@ -23,8 +25,6 @@ const elementsArray = [];
 btnStart.addEventListener('click', function(){
 
    reset();
-
-   let score = 0;
 
    // con il valore della difficoltà da 0 a 2 valorizzo un numero dentro un Array
    const nCell = nCellArray[difficultSelect.value];
@@ -51,7 +51,7 @@ btnStart.addEventListener('click', function(){
 
 
 // funzione che crea le Cell
-function createCell(indice, nCell, punteggio){
+function createCell(indice, nCell){
 
    // creo sull'HTML un 'div' e gli metto la Class '_cell'
    const element = document.createElement('div');
@@ -89,12 +89,11 @@ function createCell(indice, nCell, punteggio){
          return;
       }
 
-      // scrivi dentro 'element' il numero dell'indice e aggiungi ad element la Class '_bgcell'
-      element.innerHTML = element._numIndice;
+      // aggiungi ad 'element' la Class '_bgcell'
       element.classList.add('_bgcell');
 
       // invoco la funzione per sapere quante caselle sono state cliccate e aggiornare il counter
-      isClicked(element, nCell, punteggio, elementsArray, bombsArray);
+      isClicked(element, nCell, score, elementsArray, bombsArray);
 
    })
 
@@ -107,7 +106,6 @@ function createCell(indice, nCell, punteggio){
 
 //  funzione che mi comunica se una cella è gia stata cliccata o no, con incremento di counter
 function isClicked(element, nCell, punteggio, elementsArray){
-
    element.classList.add('_clicked');
 
    // controlla con un ciclo quante classi '_clicked' sono state assegnate, e il numero sarà il counter
@@ -120,7 +118,6 @@ function isClicked(element, nCell, punteggio, elementsArray){
     if(punteggio === (nCell - 16)){
        outputFinalScore.innerHTML = `Hai Vinto!`;
     }
-
     outputScore.innerHTML = `Hai fatto ${punteggio} punti su ${nCell}`;
 }
 
@@ -180,15 +177,9 @@ function cssClassEasyMediumHard(confronto){
 // funzione di reset
 function reset(){
    containerCell.innerHTML = '';
+   bombsArray = [];
    overlay.classList.add('d-none');
 
    outputScore.innerHTML = '';
    outputFinalScore.innerHTML = '';
 }
- 
-   
-
-
-
-
-
