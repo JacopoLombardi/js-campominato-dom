@@ -118,7 +118,7 @@ function isClicked(element, nCell, punteggio, elementsArray){
     if(punteggio === (nCell - 16)){
        outputFinalScore.innerHTML = `Hai Vinto!`;
     }
-    outputScore.innerHTML = `Hai fatto ${punteggio} punti su ${nCell}`;
+    outputScore.innerHTML = `Hai fatto ${punteggio} punti su ${nCell-16}`;
 }
 
 
